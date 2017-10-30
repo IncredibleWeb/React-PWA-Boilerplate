@@ -1,0 +1,27 @@
+.modal-overlay {
+    background-color: $overlay-background-color;
+    height: 100%;
+    left: 0;
+    opacity: .1;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    transition: opacity .4s cubic-bezier(.4, 0, .2, 1);
+    transform: translateZ(0);
+    pointer-events: none;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    &.hidden {
+        visibility: hidden;
+    }
+
+    @include breakpoint {
+        display: none;
+    }
+}

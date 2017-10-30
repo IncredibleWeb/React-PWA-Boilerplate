@@ -1,0 +1,20 @@
+{
+  "extends": [ "prettier" ],
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": false
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "module": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "plugins": [
+    "prettier"
+  ]
+}

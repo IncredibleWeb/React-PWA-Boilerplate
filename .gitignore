@@ -1,0 +1,12 @@
+node_modules/
+dist/
+css/
+*.log
+.sass-cache/
+src/script.js
+src/script.js.map
+/app.js
+/app.js.map
+*.sublime-*
+sw.js
+.idea/

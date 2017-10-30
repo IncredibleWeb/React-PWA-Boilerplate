@@ -1,0 +1,132 @@
+html {
+    background-color: $background-color;
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    position: relative;
+}
+
+body,
+select,
+input,
+textarea {
+    color: $font-color;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    font-size: $font-size;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: $theme-color-secondary;
+    text-decoration: none;
+
+    &:visited {
+        color: $theme-color-secondary;
+    }
+
+    &:hover,
+    &:active {
+        color: lighten($theme-color-secondary, 10%);
+    }
+
+    &.disabled {
+        color: $disabled-color;
+        pointer-events: none;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    margin-top: .333em;
+    line-height: 1.125;
+}
+
+header {
+    top: -3.5em;
+    left: 0;
+    right: 0;
+    height: 7em;
+    z-index: 2;
+    position: fixed;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    background-color: $theme-color-primary;
+    box-shadow: $box-shadow-bottom;
+}
+
+.header-wrapper {
+    left: 3.5em;
+    top: 3.5em;
+    padding-top: 1em;
+    position: absolute;
+    color: $theme-color-white;
+    height: 3.5em;
+    font-weight: 400;
+
+    .thumb {
+        display: inline-block;
+        height: 3.5em;
+        width: 3.5em;
+        padding: .5em;
+        vertical-align: middle;
+
+        img {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    @include breakpoint {
+        right: 1.5em;
+    }
+}
+
+footer {
+    left: 0;
+    right: 0;
+    height: 3.5em;
+    bottom: 0;
+    line-height: 3.5em;
+    z-index: 2;
+    position: fixed;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    text-align: center;
+    color: $theme-color-white;
+    background-color: $theme-color-primary;
+    box-shadow: $box-shadow-bottom;
+
+    .footer-wrapper {
+        font-size: .8em;
+    }
+}
+
+.content {
+    padding: 1em;
+}
+
+.main {
+    margin-bottom: 3.5em;
+    margin-top: 3.5em;
+
+    @include breakpoint {
+        margin-left: 16em;
+    }
+}
+
+.offline {
+    filter: grayscale(1);
+}

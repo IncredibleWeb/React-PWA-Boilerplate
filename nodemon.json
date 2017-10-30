@@ -1,0 +1,11 @@
+{
+    "watch": [
+        "app.js",
+        "dist/inline.css"
+    ],
+    "env":
+    {
+        "NODE_ENV": "development"
+    },
+    "ext": "js css"
+}

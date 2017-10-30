@@ -1,0 +1,29 @@
+.setting-list {
+    padding: 0;
+
+    .item {
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+        padding: 1em;
+        position: relative;
+    }
+
+    .title {
+        color: $theme-color-secondary;
+        display: block;
+        font-weight: 400;
+        font-size: .8em;
+
+        &.disabled {
+            color: $disabled-color;
+        }
+    }
+
+    .input {
+        position: absolute;
+        top: 0;
+        right: 3em;
+        bottom: 0;
+        height: 1em;
+        margin: auto;
+    }
+}

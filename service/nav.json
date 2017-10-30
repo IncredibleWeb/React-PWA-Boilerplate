@@ -1,0 +1,15 @@
+{
+    "name": "Home",
+    "url": "/",
+    "icon": "/img/ic_dashboard_black_24px.svg",
+    "isActive": false,
+    "children": [
+      {
+        "name": "Settings",
+        "url": "/settings",
+        "icon": "/img/ic_settings_black_24px.svg",
+        "isActive": false,
+        "children": []
+      }
+    ]
+  }

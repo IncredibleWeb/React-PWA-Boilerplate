@@ -1,0 +1,51 @@
+@import '~susy/sass/susy';
+
+$base-font-family: unquote('sans-serif');
+$background-color: #f6f6f6;
+$font-family: 'Roboto', sans-serif;
+$theme-color-primary: #29bdbb;
+$theme-color-primary-light: lighten(#29bdbb, 10%);
+$theme-color-primary-dark: darken(#29bdbb, 10%);
+$theme-color-secondary: #ef5350;
+$theme-color-white: #fff;
+$theme-color-black: #000;
+$offline-background-color: #333;
+$darken-color: rgba(0, 0, 0, .33);
+$darken-color-light: rgba(0, 0, 0, .1);
+$lighten-color: rgba(255, 255, 255, .33);
+$disabled-color: #ccc;
+$line-height: 1.5em;
+$font-size: 16px;
+$font-color: rgba(0, 0, 0, .7);
+$font-color-light: #fff;
+$font-weight: 300;
+$max-width: 78em;
+$box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+$box-shadow-elevated: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+$box-shadow-bottom: 0 2px 5px rgba(0, 0, 0, .26);
+$box-shadow-top: 0 -2px 5px rgba(0, 0, 0, .26);
+$input-border-radius: 4px;
+$border-darken: 1px solid rgba(0, 0, 0, .33);
+$border-lighten: 1px solid rgba(0, 0, 0, .05);
+$overlay-background-color: rgba(0, 0, 0, .5);
+$max-width: 72em;
+
+@mixin breakpoint($point: desktop) {
+    @if $point == desktop-xxl {
+        @media only screen and (min-width: 90em) {
+            @content;
+        }
+    }
+
+    @else if $point == desktop-l {
+        @media only screen and (min-width: 78em) {
+            @content;
+        }
+    }
+
+    @else {
+        @media only screen and (min-width: 48em) {
+            @content;
+        }
+    }
+}

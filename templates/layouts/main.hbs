@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{{> shared/meta }}
+    <style type="text/css">{{{data.inlineStyles}}}</style>
+</head>
+
+    <body>
+        {{{body}}}
+
+        {{> shared/async-css }}
+
+
+        {{#each data.vendorScripts}}
+            <script src="{{this}}"></script>
+        {{~/each}}
+        {{#each data.remoteScripts}}
+            <script src="{{this}}" async></script>
+        {{~/each}}
+    </body>
+</html>
