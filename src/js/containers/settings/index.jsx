@@ -9,6 +9,11 @@ import { fetchSettings, setPushEnabled } from "./actions";
 import { settingsReducer, getSettingsState } from "./reducer";
 
 class Settings extends React.PureComponent {
+  componentDidMount() {
+    const { onLoadSettings } = this.props;
+    onLoadSettings();
+  }
+  
   // returns the JSX that will be rendered for this component
   render() {
     const { isPushEnabled, onSetPushEnabled } = this.props;
