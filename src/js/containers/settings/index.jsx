@@ -20,7 +20,7 @@ class Settings extends React.PureComponent {
 
   // returns the JSX that will be rendered for this component
   render() {
-    const { isPushEnabled, onSetPushEnabled } = this.props.settings;
+    const { settings, onSetPushEnabled } = this.props;
     return (
       <section className="settings">
         <ul className="setting-list">
@@ -28,7 +28,7 @@ class Settings extends React.PureComponent {
             <PushNotificationToggle
               title="Push Notifications"
               html="Enable push notifications"
-              isPushEnabled={isPushEnabled}
+              isPushEnabled={settings.isPushEnabled}
               onSetPushEnabled={onSetPushEnabled}
             />
           </li>
