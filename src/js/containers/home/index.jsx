@@ -7,12 +7,17 @@ import reducerInjector from "../../util/reducerInjector";
 import { REDUCER_NAME } from "./constants";
 import { fetchHome } from "./actions";
 import { homeReducer, getHomeState } from "./reducer";
+import { getAppState } from "../app/reducer";
 
 class Home extends React.PureComponent {
   componentDidMount() {
-    const { onLoadHome, match } = this.props;
-    onLoadHome(match.path);
+    const { onLoadHome, match, app } = this.props;
+
+    if (app.url !== match.url) {
+      onLoadHome(match.path);
+    }
   }
+
   // returns the JSX that will be rendered for this component
   render() {
     const { title, html, buttons } = this.props.home;
@@ -35,7 +40,8 @@ class Home extends React.PureComponent {
 // maps the redux store state to the props related to the data from the store
 const mapStateToProps = state => {
   return {
-    home: getHomeState(state).toJS()
+    home: getHomeState(state).toJS(),
+    app: getAppState(state).toJS()
   };
 };
 

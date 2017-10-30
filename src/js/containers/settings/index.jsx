@@ -7,11 +7,20 @@ import reducerInjector from "../../util/reducerInjector";
 import { REDUCER_NAME } from "./constants";
 import { fetchSettings, setPushEnabled } from "./actions";
 import { settingsReducer, getSettingsState } from "./reducer";
+import { getAppState } from "../app/reducer";
 
 class Settings extends React.PureComponent {
+  componentDidMount() {
+    const { onLoadSettings, match, app } = this.props;
+
+    if (app.url !== match.url) {
+      onLoadSettings(match.path);
+    }
+  }
+
   // returns the JSX that will be rendered for this component
   render() {
-    const { isPushEnabled, onSetPushEnabled } = this.props;
+    const { isPushEnabled, onSetPushEnabled } = this.props.settings;
     return (
       <section className="settings">
         <ul className="setting-list">
@@ -53,7 +62,10 @@ class Settings extends React.PureComponent {
 
 // maps the redux store state to the props related to the data from the store
 const mapStateToProps = state => {
-  return getSettingsState(state).toJS();
+  return {
+    settings: getSettingsState(state).toJS(),
+    app: getAppState(state).toJS()
+  };
 };
 
 // specifies the behaviour, which callback prop dispatches which action
