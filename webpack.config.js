@@ -35,7 +35,7 @@ let node = {
             "process.env.isHttps": JSON.stringify(isHttps),
             "process.env.outputFolder": JSON.stringify(outputFolder),
             "process.env.BASE_URL": isDev ?
-                JSON.stringify("http://eliiss-api.localhost:8081/") : JSON.stringify("https://eliiss-api.azurewebsites.net/")
+                JSON.stringify("http://my-api.localhost:8081/") : JSON.stringify("https://my-api.azurewebsites.net/")
         })
     ].concat(
         isDev ? [] : [
@@ -111,7 +111,7 @@ let web = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
             "process.env.BASE_URL": isDev ?
-                JSON.stringify("http://eliiss-api.localhost:8081/") : JSON.stringify("https://eliiss-api.azurewebsites.net/")
+                JSON.stringify("http://my-api.localhost:8081/") : JSON.stringify("https://my-api.azurewebsites.net/")
         }),
         new CleanWebpackPlugin("./dist"),
         new ExtractTextPlugin({
@@ -137,7 +137,7 @@ let web = {
             jQuery: "jquery"
         }),
         new SWPrecacheWebpackPlugin({
-            cacheId: "eliiss",
+            cacheId: "cacheId",
             filename: "sw.js",
             minify: true,
             staticFileGlobs: [
