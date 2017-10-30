@@ -26,10 +26,8 @@ class AddToHomeScreen extends React.PureComponent {
 
           // follow what the user has done with the prompt.
           deferredPrompt.userChoice.then(choiceResult => {
-            if (choiceResult.outcome === "accepted") {
-              // dispose the prompt
-              onSetDeferredPrompt(null);
-            }
+            // dispose the prompt
+            onSetDeferredPrompt(null);
           });
         }}
       >

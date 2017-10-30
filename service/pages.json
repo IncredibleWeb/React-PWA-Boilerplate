@@ -1,6 +1,5 @@
 {
     "/": {
-        "view": "index",
         "meta": {
             "title": "React-PWA Dashboard"
         },
@@ -11,12 +10,19 @@
         "url": "/"
     },
     "/settings": {
-        "view": "settings",
         "meta": {
             "title": "Settings"
         },
         "title": "Settings",
         "html": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>",
         "url": "/settings"
+    },
+    "/page-not-found": {
+        "meta": {
+            "title": "Page Not Found"
+        },
+        "title": "Page Not Found",
+        "html": "<p>The page you were looking for could not be found. Please contact an administrator.</p>",
+        "url": "/page-not-found"
     }
 }

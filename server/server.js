@@ -12,6 +12,7 @@ import Routes, { getRouteComponent } from "../src/js/containers/routes/index";
 import { configureStore } from "../src/js/util/store";
 import { defaultPathConfig } from "./helpers/pathConfig";
 import Header from "../src/js/containers/header/index";
+import Page from "../src/js/containers/page/index";
 
 export function handleRender(req, res) {
   // Create a new Redux store instance
@@ -23,7 +24,7 @@ export function handleRender(req, res) {
       // retrieve data for all components on the current route
       const promises = [];
 
-      routes.some(route => {
+      const match = routes.some(route => {
         if (
           matchPath(req.path, {
             path: route.path,
@@ -35,6 +36,7 @@ export function handleRender(req, res) {
           // inject the reducer for the route
           const { key, reducer } = component.getReducer();
           injectReducer(store, key, reducer);
+
           // add the promise to fetch the route data
           promises.push(
             component.fetchData(store, { params, path, url, query })
@@ -42,6 +44,14 @@ export function handleRender(req, res) {
           return;
         }
       });
+
+      // handle 404
+      if (!match) {
+        const { key, reducer } = Page.getReducer();
+        injectReducer(store, key, reducer);
+        promises.push(Page.fetchData(store, { path: "/page-not-found" }));
+        req.show404 = true;
+      }
 
       if (Header) {
         const { key, reducer } = Header.getReducer();

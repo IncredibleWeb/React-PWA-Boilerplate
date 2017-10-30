@@ -8,7 +8,7 @@ import ScrollToTop from "../../components/routes/scrollToTop";
 import Layout from "../layout/index";
 import Home from "../home/index";
 import Settings from "../settings/index";
-import NotFound from "../notFound/index";
+import Page from "../page/index";
 
 class Routes extends React.PureComponent {
   componentDidMount() {
@@ -33,7 +33,9 @@ class Routes extends React.PureComponent {
                 />
               );
             })}
-            <Route component={NotFound} />
+            <Route
+              render={props => <Page {...props} path={"/page-not-found"} />}
+            />
             />
           </Switch>
         </ScrollToTop>
@@ -59,6 +61,12 @@ export const getRouteComponent = name => {
         component: Settings,
         getReducer: Settings.getReducer,
         fetchData: Settings.fetchData
+      };
+    case "Page":
+      return {
+        component: Page,
+        getReducer: Page.getReducer,
+        fetchData: Page.fetchData
       };
     default:
       return undefined;

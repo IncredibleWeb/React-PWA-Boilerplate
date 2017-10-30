@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Meta from "../../components/meta/meta";
 import Card from "../../components/card/card";
 import reducerInjector from "../../util/reducerInjector";
 import { REDUCER_NAME } from "./constants";
