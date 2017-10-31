@@ -2,7 +2,6 @@
  * Root component on the server-side
  */
 import React from "react";
-import ReactDOM from "react-dom";
 import { StaticRouter, matchPath } from "react-router-dom";
 import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
@@ -27,21 +26,20 @@ export function handleRender(req, res) {
       const match = routes.some(route => {
         if (
           matchPath(req.path, {
-            path: route.path,
+            path: route.url,
             exact: true
           })
         ) {
           // GET routes
-          const component = getRouteComponent(route.component);
+          const component = getRouteComponent(route.name);
           // inject the reducer for the route
           const { key, reducer } = component.getReducer();
           injectReducer(store, key, reducer);
-
           // add the promise to fetch the route data
           promises.push(
             component.fetchData(store, { params, path, url, query })
           );
-          return;
+          return true;
         }
       });
 

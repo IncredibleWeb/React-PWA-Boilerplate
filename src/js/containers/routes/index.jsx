@@ -26,10 +26,10 @@ class Routes extends React.PureComponent {
             {routes.map(route => {
               return (
                 <Route
-                  key={route.path}
+                  key={route.url}
                   exact
-                  path={route.path}
-                  component={getRouteComponent(route.component).component}
+                  path={route.url}
+                  component={getRouteComponent(route.name).component}
                 />
               );
             })}

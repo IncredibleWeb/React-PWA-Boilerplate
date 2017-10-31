@@ -1,18 +1,5 @@
-import { SET_ROUTES, ROUTES_LOADING, ROUTES_ERROR } from "./constants";
-import { getRoutes } from "../../routes";
-
-const isLoading = data => {
-  return {
-    type: ROUTES_LOADING,
-    data
-  };
-};
-
-const isError = data => {
-  return {
-    type: ROUTES_ERROR
-  };
-};
+import { SET_ROUTES } from "./constants";
+import { getRouteData } from "../../../../service/service";
 
 const loadRoutes = data => {
   return {
@@ -23,17 +10,13 @@ const loadRoutes = data => {
 
 export const fetchRoutes = data => {
   return dispatch => {
-    dispatch(isLoading(true));
-
-    return getRoutes(data)
-      .then(response => {
-        dispatch(isLoading(false));
-        return response;
-      })
+    return getRouteData(data)
       .then(response => {
         dispatch(loadRoutes(response));
         return response;
       })
-      .catch(() => dispatch(isError()));
+      .catch(() => {
+        throw error;
+      });
   };
 };
