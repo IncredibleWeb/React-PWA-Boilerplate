@@ -26,14 +26,15 @@ class Nav extends React.PureComponent {
         href: location.pathname
       });
     });
-  }
 
-  componentDidMount() {
-    this.init();
     this.onLinkClick = this.onLinkClick.bind(this);
     this.toggle = this.toggle.bind(this);
     this.updateHistory = this.updateHistory.bind(this);
     this.updateSlide = this.updateSlide.bind(this);
+  }
+
+  componentDidMount() {
+    this.init();
   }
 
   render() {
@@ -90,7 +91,6 @@ class Nav extends React.PureComponent {
     });
 
     // handle touch gestures to allow swipe out
-    const swipeSlope = 3; // reciprocal of the swipe slope (1 means 45 deg, 5 means approx 11 deg)
     let touchX = 0;
     let touchY = 0;
 
