@@ -55,8 +55,8 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "deploy": "cross-env DEPLOY=true; npm run build",
-    "build": "cross-env NODE_ENV=production; webpack",
+    "deploy": "cross-env DEPLOY=true npm run build",
+    "build": "cross-env NODE_ENV=production webpack",
     "build:dev": "webpack",
     "watch": "webpack --watch",
     "start": "node app.js",
