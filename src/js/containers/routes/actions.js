@@ -16,6 +16,7 @@ export const fetchRoutes = data => {
         return response;
       })
       .catch(() => {
+        console.error(error);
         throw error;
       });
   };

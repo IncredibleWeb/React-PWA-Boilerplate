@@ -95,10 +95,12 @@ export function handleRender(req, res) {
           }
         })
         .catch(error => {
+          console.error(error);
           throw error;
         });
     })
     .catch(error => {
+      console.error(error);
       throw error;
     });
 }

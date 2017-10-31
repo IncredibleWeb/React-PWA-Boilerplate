@@ -25,6 +25,7 @@ export const fetchSettings = data => {
         dispatch(setPushEnabled(false));
       })
       .catch(error => {
+        console.error(error);
         throw error;
       });
   };

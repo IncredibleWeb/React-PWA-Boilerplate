@@ -24,6 +24,7 @@ export const fetchPage = data => {
         dispatch(loadPage(response));
       })
       .catch(error => {
+        console.error(error);
         throw error;
       });
   };

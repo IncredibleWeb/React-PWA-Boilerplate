@@ -22,6 +22,7 @@ export const fetchHeader = data => {
         dispatch(loadHeader(response));
       })
       .catch(error => {
+        console.error(error);
         throw error;
       });
   };

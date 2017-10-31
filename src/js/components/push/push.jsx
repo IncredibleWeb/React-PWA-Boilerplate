@@ -63,13 +63,16 @@ class PushNotificationToggle extends React.PureComponent {
 
     if (e.target.checked) {
       // enable push
-      subscribe().then(() => {
-        onSetPushEnabled(true);
+      subscribe().then(response => {
+        onSetPushEnabled(response);
+        if (!response) {
+          this.setState({ isEnabled: false });
+        }
       });
     } else {
       // disable push
-      unsubscribe().then(() => {
-        onSetPushEnabled(false);
+      unsubscribe().then(response => {
+        onSetPushEnabled(!response);
       });
     }
   }
@@ -94,16 +97,15 @@ const subscribe = () => {
     }
 
     if (Notification.permission === "granted") {
-      return resolve();
+      return resolve(true);
     }
 
     if (Notification.permission === "default") {
       Notification.requestPermission(result => {
         if (result !== "granted") {
-          reject(new Error("Bad permission result"));
+          resolve(false);
         }
-
-        resolve();
+        resolve(true);
       });
     }
   })
@@ -129,19 +131,21 @@ const subscribe = () => {
           return true;
         })
         .catch(e => {
-          console.warn("Subscription error: ", e);
+          console.warn(e);
+          return false;
         });
     })
     .catch(e => {
       // permission prompt issue
-      console.warn("Subscription error: ", e);
+      console.warn(e);
+      return false;
     });
 };
 
 const unsubscribe = () => {
   return navigator.serviceWorker.ready.then(serviceWorkerRegistration => {
     // to unsubscribe from push messaging, you need get the subscription object, which you can call unsubscribe() on.
-    serviceWorkerRegistration.pushManager
+    return serviceWorkerRegistration.pushManager
       .getSubscription()
       .then(pushSubscription => {
         // check we have a subscription to unsubscribe
@@ -151,7 +155,7 @@ const unsubscribe = () => {
         }
 
         // we have a subscription, so call unsubscribe on it
-        pushSubscription
+        return pushSubscription
           .unsubscribe()
           .then(successful => {
             return true;

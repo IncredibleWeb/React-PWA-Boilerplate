@@ -25,6 +25,7 @@ export const fetchHome = data => {
         dispatch(loadHome(response));
       })
       .catch(error => {
+        console.error(error);
         throw error;
       });
   };
