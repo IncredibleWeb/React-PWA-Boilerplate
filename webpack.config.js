@@ -2,6 +2,7 @@
 const isDev = process.env.NODE_ENV !== "production";
 const isHttps = false;
 const outputFolder = "dist";
+const isDeploy = process.env.DEPLOY;
 
 /* imports */
 const path = require("path");
@@ -35,7 +36,7 @@ let node = {
             "process.env.isHttps": JSON.stringify(isHttps),
             "process.env.outputFolder": JSON.stringify(outputFolder),
             "process.env.BASE_URL": isDev ?
-                JSON.stringify("http://my-api.localhost:8081/") : JSON.stringify("https://my-api.azurewebsites.net/")
+                JSON.stringify("http://eliiss-api.localhost:8081/") : JSON.stringify("https://eliiss-api.azurewebsites.net/")
         })
     ].concat(
         isDev ? [] : [
@@ -100,8 +101,7 @@ let web = {
         path: path.join(__dirname, outputFolder),
         filename: "[name]"
     },
-    plugins: [
-        new BundleAnalyzerPlugin(),
+    plugins: [        
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             filename: "vendor.js",
@@ -111,7 +111,7 @@ let web = {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
             "process.env.BASE_URL": isDev ?
-                JSON.stringify("http://my-api.localhost:8081/") : JSON.stringify("https://my-api.azurewebsites.net/")
+                JSON.stringify("http://eliiss-api.localhost:8081/") : JSON.stringify("https://eliiss-api.azurewebsites.net/")
         }),
         new CleanWebpackPlugin("./dist"),
         new ExtractTextPlugin({
@@ -137,7 +137,7 @@ let web = {
             jQuery: "jquery"
         }),
         new SWPrecacheWebpackPlugin({
-            cacheId: "cacheId",
+            cacheId: "eliiss",
             filename: "sw.js",
             minify: true,
             staticFileGlobs: [
@@ -146,7 +146,8 @@ let web = {
             ],
             stripPrefix: `/${outputFolder}`
         })
-    ].concat(isDev ? [] : [new webpack.optimize.UglifyJsPlugin()]),
+    ].concat(isDev ? [] : [new webpack.optimize.UglifyJsPlugin()])
+    .concat(isDeploy ? [] : [new BundleAnalyzerPlugin()]),
     module: {
         loaders: [{
                 enforce: "pre",

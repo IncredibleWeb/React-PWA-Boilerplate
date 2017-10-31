@@ -60,9 +60,9 @@
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "build": "SET NODE_ENV=production&&webpack",
-    "build:osx": "NODE_ENV=production webpack",
-    "build:dev": "webpack --progress --color",
+    "deploy": "npm run env DEPLOY=true -- npm run build",
+    "build": "npm run env NODE_ENV=production -- webpack",
+    "build:dev": "webpack",
     "watch": "webpack --watch",
     "start": "node app.js",
     "start_watch": "nodemon --inspect app.js --config nodemon.json"
