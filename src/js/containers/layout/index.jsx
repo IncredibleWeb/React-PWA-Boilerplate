@@ -13,7 +13,7 @@ class Layout extends React.PureComponent {
   render() {
     const { children, app } = this.props;
     return (
-      <div className="layout">
+      <div className={(app.isLoading ? "is-loading" : "") + " layout"}>
         <Meta meta={app.meta} url={app.url} />
         <Header />
         <FadeTransition in={!app.isLoading}>

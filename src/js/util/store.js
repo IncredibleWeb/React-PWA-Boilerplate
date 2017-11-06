@@ -6,6 +6,7 @@
 import { createStore, applyMiddleware } from "redux";
 import { fromJS } from "immutable";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 import createReducer from "./reducers";
 
@@ -13,7 +14,7 @@ export function configureStore(initialState = {}) {
   let store = createStore(
     createReducer(),
     fromJS(initialState),
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk))
   );
 
   store.injectedReducers = {}; // Reducer registry
@@ -22,6 +23,7 @@ export function configureStore(initialState = {}) {
 }
 
 export function injectReducer(store, name, asyncReducer) {
-  store.injectedReducers[name] = asyncReducer;
-  store.replaceReducer(createReducer(store.injectedReducers));
+  // TODO: unable to user reducer injection because of preloaded state
+  // store.injectedReducers[name] = asyncReducer;
+  // store.replaceReducer(createReducer(store.injectedReducers));
 }

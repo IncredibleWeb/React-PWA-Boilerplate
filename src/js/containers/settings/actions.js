@@ -15,13 +15,13 @@ export const fetchSettings = data => {
 
     return getPageData(data)
       .then(response => {
-        dispatch(isLoading(false));
         dispatch(setMeta(response.meta));
         dispatch(setUrl(response.url));
         dispatch(setTitle(response.title));
         return response;
       })
       .then(response => {
+        dispatch(isLoading(false));
         dispatch(setPushEnabled(false));
       })
       .catch(error => {

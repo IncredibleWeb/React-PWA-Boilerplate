@@ -1,17 +1,48 @@
-.fade-enter {
-    opacity: .0001;
+.layout {
+    &::before {
+        content: '';
+        background: url('/img/loader.svg') 50% no-repeat transparent;
+        background-size: 4em;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .01;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: opacity;
+    }
+
+    &.is-loading {
+        &::before {
+            transition: opacity 300ms ease-in;
+            transition-delay: 700ms;
+            opacity: 1;
+        }
+
+        .main {
+            opacity: .0001;
+        }
+    }
 }
 
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 200ms ease-in;
-}
+.main {
+    &.fade-enter {
+        opacity: .0001;
+    }
 
-.fade-exit {
-    opacity: 1;
-}
+    &.fade-enter.fade-enter-active {
+        opacity: 1;
+        transition: opacity 200ms ease-in;
+    }
 
-.fade-exit.fade-exit-active {
-    opacity: .0001;
-    transition: opacity 150ms ease-in;
+    &.fade-exit {
+        opacity: 1;
+    }
+
+    &.fade-exit.fade-exit-active {
+        opacity: .0001;
+        transition: opacity 150ms ease-in;
+    }
 }
