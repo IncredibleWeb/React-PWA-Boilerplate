@@ -12,7 +12,7 @@ import Overlay from "./overlay";
 import NavTree from "./navTree";
 
 const menuQueryItem = "_nav";
-const swipeSlope = 5; // reciprocal of the swipe slope (1 means 45 deg, 5 means approx 11 deg)
+const swipeSlope = 3; // reciprocal of the swipe slope (1 means 45 deg, 5 means approx 11 deg)
 
 // This extends PureComponent instead of functional component because we use ref
 class Nav extends React.PureComponent {
@@ -75,7 +75,7 @@ class Nav extends React.PureComponent {
   }
 
   init() {
-    let self = this;
+    const self = this;
     self.isVisible = false;
     self.startX = 0;
     self.currentX = 0;
@@ -228,7 +228,7 @@ class Nav extends React.PureComponent {
 
   // toggle the overlay and the state of the navigation
   toggle(isFromHistory) {
-    let self = this;
+    const self = this;
     self.isVisible = !self.isVisible;
 
     if (self.isVisible) {
