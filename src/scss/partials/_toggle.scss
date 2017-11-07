@@ -1,7 +1,4 @@
 /* Credits to Kyle Lavery: https://codepen.io/koenigsegg1/pen/QjZNVP */
-.toggle-description {
-    padding-right: 3em;
-}
 $toggle-color-checked: #3f51b5;
 $toggle-color-disabled: #c6c6c6;
 $switch-color-checked: #9ca5d7;
@@ -10,7 +7,11 @@ $switch-color: #939393;
 $width: 32px;
 $height: $width / 2.5;
 
-input[type='checkbox'] {
+.toggle-description {
+    padding-right: 3em;
+}
+
+.toggle-input {
     display: none;
 
     &:checked {
@@ -32,27 +33,27 @@ input[type='checkbox'] {
             background: $toggle-color-disabled;
         }
     }
-}
 
-.switch {
-    display: block;
-    width: $width;
-    height: $height;
-    background: $switch-color;
-    border-radius: $height / 2;
-    position: absolute;
-    top: 0;
-    transition: .3s;
-}
+    .switch {
+        display: block;
+        width: $width;
+        height: $height;
+        background: $switch-color;
+        border-radius: $height / 2;
+        position: absolute;
+        top: 0;
+        transition: .3s;
+    }
 
-.toggle {
-    height: $height * 1.4;
-    width: $height * 1.4;
-    border-radius: 50%;
-    background: $toggle-color;
-    position: absolute;
-    top: ($height * 1.4 - $height) / -2;
-    left: ($height * 1.4 - $height) / -2;
-    box-shadow: 0 $width / 50 $width / 25 rgba(0, 0, 0, .4);
-    transition: .3s;
+    .toggle {
+        height: $height * 1.4;
+        width: $height * 1.4;
+        border-radius: 50%;
+        background: $toggle-color;
+        position: absolute;
+        top: ($height * 1.4 - $height) / -2;
+        left: ($height * 1.4 - $height) / -2;
+        box-shadow: 0 $width / 50 $width / 25 rgba(0, 0, 0, .4);
+        transition: .3s;
+    }
 }
