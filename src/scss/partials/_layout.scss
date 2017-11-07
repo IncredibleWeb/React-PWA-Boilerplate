@@ -12,13 +12,15 @@
         transform: translateZ(0);
         backface-visibility: hidden;
         will-change: opacity;
+        visibility: hidden;
     }
 
     &.is-loading {
         &::before {
+            visibility: visible;
+            opacity: 1;
             transition: opacity 300ms ease-in;
             transition-delay: 700ms;
-            opacity: 1;
         }
 
         .main {
