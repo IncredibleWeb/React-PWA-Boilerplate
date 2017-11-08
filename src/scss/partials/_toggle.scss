@@ -12,25 +12,27 @@ $height: $width / 2.5;
 }
 
 .toggle-input {
-    display: none;
+    input[type=checkbox] {
+        display: none;
 
-    &:checked {
-        ~ .toggle {
-            background: $toggle-color-checked;
-            left: ($width - ($height * 1.4 - $height) / 2) - $height;
-            transition: .3s;
+        &:checked {
+            ~ .toggle {
+                background: $toggle-color-checked;
+                left: ($width - ($height * 1.4 - $height) / 2) - $height;
+                transition: .3s;
+            }
+
+            ~ .switch {
+                background: $switch-color-checked;
+                transition: .3s;
+            }
         }
 
-        ~ .switch {
-            background: $switch-color-checked;
-            transition: .3s;
-        }
-    }
-
-    &:disabled,
-    &.disabled {
-        ~ .toggle {
-            background: $toggle-color-disabled;
+        &:disabled,
+        &.disabled {
+            ~ .toggle {
+                background: $toggle-color-disabled;
+            }
         }
     }
 
