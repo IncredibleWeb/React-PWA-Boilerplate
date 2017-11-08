@@ -9,7 +9,7 @@ const Toggle = ({ id, title, html, onChange, disabled, checked }) => {
         className="toggle-description"
         dangerouslySetInnerHTML={{ __html: html }}
       />
-      <div className="toggle-input">
+      <div className="input toggle-input">
         <input
           type="checkbox"
           id={id}
