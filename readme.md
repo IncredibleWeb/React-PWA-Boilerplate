@@ -3,7 +3,7 @@ A universal progressive web app boilerplate built using React + Redux.
 
 ## Usage
 - Run `npm install` to install all the required dependencies
-- Run `npm install -g webopen pack` to install webpack globally on your machine.
+- Run `npm install -g webpack` to install webpack globally on your machine.
 - Run `npm run build` to build the project using webpack configurations.
 - Run `npm start` to start a node server on `localhost:3000`
 
